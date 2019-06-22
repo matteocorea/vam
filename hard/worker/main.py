@@ -5,7 +5,7 @@ from datatransformer import DataTransformer
 
 def main():
     if (len(sys.argv) != 2):
-        print "Usage: {} streamid".format(sys.argv[0])
+        print (f"Usage: {sys.argv[0]} streamid")
         exit(1)
     stream_id = sys.argv[1]
     

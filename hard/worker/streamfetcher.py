@@ -1,4 +1,4 @@
-import urllib2
+import urllib.request
 import json
 
 class StreamFetcher:
@@ -9,7 +9,7 @@ class StreamFetcher:
 	def fetch_stream(self, stream_number, start, batch_size):
 		"""Fetch data from a stream, returning a data batch with given start."""
 		
-		url = "https://api.ona.io/api/v1/data/{}?start={}&limit={}".format(stream_number, start, batch_size)
-		data = urllib2.urlopen(url).read()
+		url = (f"https://api.ona.io/api/v1/data/{stream_number}?start={start}&limit={batch_size}")
+		data = urllib.request.urlopen(url).read()
 		jsondata = json.loads(data)
 		return jsondata

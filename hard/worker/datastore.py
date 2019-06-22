@@ -7,7 +7,7 @@ class DataStore:
     def __init__(self, host='localhost', port=27017, collection_prefix='streamdata_',
                  dbname='testdb'):
         self.collection_prefix = collection_prefix
-        client = MongoClient(host='mongodb://{}'.format(host), port=port)
+        client = MongoClient(host=(f'mongodb://{host}'), port=port)
         self.db = client[dbname]
     
     def __get_collection(self, stream_id):
