@@ -1,4 +1,5 @@
 import sys
+import logging
 import urllib2
 import json
 from pymongo import MongoClient
@@ -16,7 +17,12 @@ def main():
         
     data = urllib2.urlopen("https://api.ona.io/api/v1/data/{}".format(stream_id)).read()
     jsondata = json.loads(data)
+    
     client = MongoClient()
-    client.testdb.easycollection.insert_many(jsondata)
+    for datum in jsondata:
+        try:
+            client.testdb.easycollection.insert_one(datum)
+        except:
+            logging.error('could not save message with id "{}"'.format(datum['_id']))
     
 main()
