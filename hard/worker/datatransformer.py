@@ -7,6 +7,10 @@ class DataTransformer:
     """
     
     def transform_data(self, data):
-        """Here be transformations (and dragons)."""
+        """Here be transformations (and dragons).
+        
+        :param data: Dictionary containing a single datum to be transformed.
+        :return: Dictionary containing the transformed datum
+        """
         
         return data

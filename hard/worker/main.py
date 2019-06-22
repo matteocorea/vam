@@ -20,4 +20,5 @@ def main():
     data = transformer.transform_data(data)
     data_store.save(data, stream_id)
 
-main()
+if __name__ == '__main__':
+    main()
