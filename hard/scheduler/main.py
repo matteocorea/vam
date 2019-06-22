@@ -1,4 +1,5 @@
 from time import sleep
+import sys
 
 """Proof of concept for a simple scheduler.
 
@@ -29,7 +30,11 @@ def get_streams_to_poll():
     return [185260, 1234, 5423, 6534, 9345]
     
 def main():
-    poll_frequency_seconds = 5   # This should be part of the configuration
+    if (len(sys.argv) != 2):
+        print (f"Usage: {sys.argv[0]} scheduling_frequency_seconds")
+        exit(1)
+    poll_frequency_seconds = (int)(sys.argv[1])
+
     streams = get_streams_to_poll()
     
     while(True):
