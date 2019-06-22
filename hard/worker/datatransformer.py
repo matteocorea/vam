@@ -7,6 +7,6 @@ class DataTransformer:
     """
     
     def transform_data(self, data):
-        """Here be transformations."""
+        """Here be transformations (and dragons)."""
         
         return data

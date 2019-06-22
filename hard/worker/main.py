@@ -9,12 +9,15 @@ def main():
         exit(1)
     stream_id = sys.argv[1]
     
+    batch_size = 30     # could be made configurable
+    
     fetcher = StreamFetcher()
     data_store = DataStore()
     transformer = DataTransformer()
     
-    data = fetcher.fetch_stream(stream_id, 2, 4)
+    first_record = data_store.count_messages(stream_id)
+    data = fetcher.fetch_stream(stream_id, first_record, batch_size)
     data = transformer.transform_data(data)
-    data_store.save(data)
+    data_store.save(data, stream_id)
 
 main()
